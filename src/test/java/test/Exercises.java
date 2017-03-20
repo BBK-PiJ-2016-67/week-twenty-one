@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -56,9 +57,9 @@ public class Exercises {
     // and gather the result into an output list.
 
     @Test
-    @Ignore
     public void upperCaseWords() {
-        List<String> output = null; /* TODO */
+        wordList.replaceAll(String::toUpperCase);
+        List<String> output = wordList;
 
         assertEquals(
                 Arrays.asList(
@@ -75,7 +76,7 @@ public class Exercises {
     @Test
     @Ignore
     public void findEvenLengthWords() {
-        List<String> output = null; /* TODO */
+        List<String> output = wordList.stream().filter(s -> s.length() % 2 == 0).collect(Collectors.toList());
 
         assertEquals(
                 Arrays.asList(
