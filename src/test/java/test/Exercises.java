@@ -19,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import static java.lang.Math.toIntExact;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -74,7 +76,6 @@ public class Exercises {
     // and put them into an output list.
 
     @Test
-    @Ignore
     public void findEvenLengthWords() {
         List<String> output = wordList.stream().filter(s -> s.length() % 2 == 0).collect(Collectors.toList());
 
@@ -91,9 +92,8 @@ public class Exercises {
     // located at the root of this NetBeans project.
 
     @Test
-    @Ignore
     public void countLinesInFile() throws IOException {
-        long count = 0L; /* TODO */
+        long count = reader.lines().count();
 
         assertEquals(14, count);
     }
@@ -102,9 +102,13 @@ public class Exercises {
     // Exercise 5: Join lines 3-4 from the text file into a single string.
 
     @Test
-    @Ignore
     public void joinLineRange() throws IOException {
-        String output = null; /* TODO */
+        int[] indexarr = {0};
+        String output = reader.lines().filter(l -> {
+            indexarr[0]++;
+            int index = indexarr[0];
+            return index == 3 || index == 4;
+        }).collect(Collectors.joining());
 
         assertEquals(
                 "But as the riper should by time decease," +
