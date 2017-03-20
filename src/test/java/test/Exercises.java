@@ -48,14 +48,8 @@ public class Exercises {
     // Exercise 1: Print out all the words in wordList, which is a static List<String> .
 
     @Test
-    @Ignore
     public void printAllWords() {
-        /* TODO */
-
-        // We will give you this one to show you the "style"
-        // wordList.forEach(System.out::println);
-
-        // no assertions
+        wordList.forEach(System.out::println);
     }
 
     // Exercise 2: Convert all words in wordList to upper case,
